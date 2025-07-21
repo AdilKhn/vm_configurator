@@ -75,4 +75,4 @@ set_default_shell() {
 install_zsh
 set_default_shell
 
-echo "Zsh setup script finished."
+echo "Zsh setup script finished. Reboot please"
