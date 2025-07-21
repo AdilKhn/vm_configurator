@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Starting Zsh installation and setup..."
-sudo apt install zsh
+sudo apt install -y zsh
 sudo chsh -s $(which zsh) $USER
 
 #setup startshp and zim
