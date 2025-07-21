@@ -2,9 +2,18 @@
 
 echo "Starting Zsh installation and setup..."
 
-# Function to check if a command exists
+# Function to check if a command exists and is executable
+# This is more robust than just 'type' as it verifies it's a real executable file.
 command_exists() {
-  type "$1" &>/dev/null
+  local cmd="$1"
+  if type "$cmd" &>/dev/null; then
+    # If 'type' finds it, try to get its path and check if it's an executable file
+    local path=$(which "$cmd" 2>/dev/null)
+    if [ -f "$path" ] && [ -x "$path" ]; then
+      return 0 # Command exists and is an executable file
+    fi
+  fi
+  return 1 # Command does not exist or is not an executable file
 }
 
 # --- Installation Function ---
